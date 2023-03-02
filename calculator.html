@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Black Sands Character Calculator</title>
+	<link rel="stylesheet" href="calculator.css">
+	<script src="calculator.js"></script>
+</head>
+<body onload="char_calc.reset()">
+	<form id="char_calc">
+		<div>
+			<table id="points">
+		<!-- 		<tr><th>Alloted Points</th>   
+					<td>
+						<input type="range" min="0" max="200" value="100" id="alloted_slider" oninput="update_alloted(alloted_num, this)"><br/>
+						<input type="number" min="0" max="200" value="100" id="alloted_num" oninput="update_alloted(alloted_slider, this)"/>
+					</td>
+				</tr>
+				<tr><th>Available Points</th> <td><output id="available_points">100</output></td></tr> -->
+				<tr><th>Total Point Cost</th> <td><output id="point_total">0</output></td></tr>
+				<!-- <tr>
+					<th>Race</th>
+					<td>
+						<select name="Race" id="race">
+							<option value="gyrstall">Gyrstall</option>
+							<option value="harnwulf">Harnwulf</option>
+							<option value="iktani">Iktani</option>
+							<option value="seledhior">Seledhior</option>
+							<option value="coast_vulture">Coast Vulture</option>
+							<option value="dustcropper">Dustcropper</option>
+							<option value="ice_stalker">Ice Stalker</option>
+						</select> 
+					</td>
+				</tr> -->
+			</table>
+<!-- 			<table id="costs">
+				<tr><th>Background Cost</th><td><input type="number" value="0" id="exp_hr" oninput="update_cost_hr()"/></td></tr>
+				<tr><th>Advantage Cost</th><td><input type="number" value="0" id="exp_hr" oninput="update_cost_hr()"/></td></tr>
+				<tr><th>Disadvantage credit</th><td><input type="number" value="0" id="exp_hr" oninput="update_cost_hr()"/></td></tr>
+			</table> -->
+			<hr/>
+			<table id="talents">
+				<tr><th>Talent</th><th>Total</th><th>Natural</th><th>Ranks</th><th>Points</th></tr>
+				<tr><th>Force</th>
+					<td><output id="Force_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Force_base" oninput="update_talent_points(Force_total, Force_base, Force_ranks, Force_points)"/> + </td>
+					<!-- <td><output id="Force_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Force_ranks" oninput="update_talent_points(Force_total, Force_base, this, Force_points)"/></td>
+					<td><output class="points" id="Force_points">0</output></td></tr>
+				<tr><th>Dexterity</th>
+					<td><output id="Dexterity_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Dexterity_base" oninput="update_talent_points(Dexterity_total, Dexterity_base, Dexterity_ranks, Dexterity_points)"/> + </td>
+					<!-- <td><output id="Dexterity_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Dexterity_ranks" oninput="update_talent_points(Dexterity_total, Dexterity_base, this, Dexterity_points)"/></td>
+					<td><output class="points" id="Dexterity_points">0</output></td></tr>
+				<tr><th>Quickness</th>
+					<td><output id="Quickness_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Quickness_base" oninput="update_talent_points(Quickness_total, Quickness_base, Quickness_ranks, Quickness_points)"/> + </td>
+					<!-- <td><output id="Quickness_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Quickness_ranks" oninput="update_talent_points(Quickness_total, Quickness_base, this, Quickness_points)"/></td>
+					<td><output class="points" id="Quickness_points">0</output></td></tr>
+				<tr><th>Toughness</th>
+					<td><output id="Toughness_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Toughness_base" oninput="update_talent_points(Toughness_total, Toughness_base, Toughness_ranks, Toughness_points)"/> + </td>
+					<!-- <td><output id="Toughness_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Toughness_ranks" oninput="update_talent_points(Toughness_total, Toughness_base, this, Toughness_points)"/></td>
+					<td><output class="points" id="Toughness_points">0</output></td></tr>
+				<tr><th>Moxy</th>
+					<td><output id="Moxy_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Moxy_base" oninput="update_talent_points(Moxy_total, Moxy_base, Moxy_ranks, Moxy_points)"/> + </td>
+					<!-- <td><output id="Moxy_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Moxy_ranks" oninput="update_talent_points(Moxy_total, Moxy_base, this, Moxy_points)"/></td>
+					<td><output class="points" id="Moxy_points">0</output></td></tr>
+				<tr><th>Intelligence</th>
+					<td><output id="Intelligence_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Intelligence_base" oninput="update_talent_points(Intelligence_total, Intelligence_base, Intelligence_ranks, Intelligence_points)"/> + </td>
+					<!-- <td><output id="Intelligence_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Intelligence_ranks" oninput="update_talent_points(Intelligence_total, Intelligence_base, this, Intelligence_points)"/></td>
+					<td><output class="points" id="Intelligence_points">0</output></td></tr>
+				<tr><th>Perception</th>
+					<td><output id="Perception_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Perception_base" oninput="update_talent_points(Perception_total, Perception_base, Perception_ranks, Perception_points)"/> + </td>
+					<!-- <td><output id="Perception_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Perception_ranks" oninput="update_talent_points(Perception_total, Perception_base, this, Perception_points)"/></td>
+					<td><output class="points" id="Perception_points">0</output></td></tr>
+				<tr><th>Grit</th>
+					<td><output id="Grit_total">5</output> = </td>
+					<td><input type="number" min="4" max="9" value="5" id="Grit_base" oninput="update_talent_points(Grit_total, Grit_base, Grit_ranks, Grit_points)"/> + </td>
+					<!-- <td><output id="Grit_base">5</output> + </td> -->
+					<td><input type="number" min="-3" max="5" value="0" id="Grit_ranks" oninput="update_talent_points(Grit_total, Grit_base, this, Grit_points)"/></td>
+					<td><output class="points" id="Grit_points">0</output></td></tr>
+			</table>
+		</div>
+		<hr/>
+		<div>
+			<table id="skills">
+				<tr><th>Skill</th><th>Ranks</th><th>Points</th><th>Background Bonus</th></tr>
+				<tr><th>Melee Combat</th>
+					<td><input type="number" min="0" max="5" value="0" id="melee_combat_ranks" oninput="update_skill_points(melee_combat_ranks, melee_combat_points, melee_combat_bonus)"/></td>
+					<td><output class="points" id="melee_combat_points">0</output></td>
+					<td><input type="number" value="0" id="melee_combat_bonus" oninput="update_skill_points(melee_combat_ranks, melee_combat_points, melee_combat_bonus)"/></td>
+				</tr>
+				<tr><th>Projectile Weapons</th>
+					<td><input type="number" min="0" max="5" value="0" id="projectile_weapons_ranks" oninput="update_skill_points(projectile_weapons_ranks, projectile_weapons_points, projectile_weapons_bonus)"/></td>
+					<td><output class="points" id="projectile_weapons_points">0</output></td>
+					<td><input type="number" value="0" id="projectile_weapons_bonus" oninput="update_skill_points(projectile_weapons_ranks, projectile_weapons_points, projectile_weapons_bonus)"/></td>
+				</tr>
+				<tr><th>Firearms</th>
+					<td><input type="number" min="0" max="5" value="0" id="firearms_ranks" oninput="update_skill_points(firearms_ranks, firearms_points, firearms_bonus)"/></td>
+					<td><output class="points" id="firearms_points">0</output></td>
+					<td><input type="number" value="0" id="firearms_bonus" oninput="update_skill_points(firearms_ranks, firearms_points, firearms_bonus)"/></td>
+				</tr>
+				<tr><th>Warfare</th>
+					<td><input type="number" min="0" max="5" value="0" id="warfare_ranks" oninput="update_skill_points(warfare_ranks, warfare_points, warfare_bonus)"/></td>
+					<td><output class="points" id="warfare_points">0</output></td>
+					<td><input type="number" value="0" id="warfare_bonus" oninput="update_skill_points(warfare_ranks, warfare_points, warfare_bonus)"/></td>
+				</tr>
+				<tr><th>Athletics</th>
+					<td><input type="number" min="0" max="5" value="0" id="athletics_ranks" oninput="update_skill_points(athletics_ranks, athletics_points, athletics_bonus)"/></td>
+					<td><output class="points" id="athletics_points">0</output></td>
+					<td><input type="number" value="0" id="athletics_bonus" oninput="update_skill_points(athletics_ranks, athletics_points, athletics_bonus)"/></td>
+				</tr>
+				<tr><th>Tenacity</th>
+					<td><input type="number" min="0" max="5" value="0" id="tenacity_ranks" oninput="update_skill_points(tenacity_ranks, tenacity_points, tenacity_bonus)"/></td>
+					<td><output class="points" id="tenacity_points">0</output></td>
+					<td><input type="number" value="0" id="tenacity_bonus" oninput="update_skill_points(tenacity_ranks, tenacity_points, tenacity_bonus)"/></td>
+				</tr>
+				<tr><th>Stealth</th>
+					<td><input type="number" min="0" max="5" value="0" id="stealth_ranks" oninput="update_skill_points(stealth_ranks, stealth_points, stealth_bonus)"/></td>
+					<td><output class="points" id="stealth_points">0</output></td>
+					<td><input type="number" value="0" id="stealth_bonus" oninput="update_skill_points(stealth_ranks, stealth_points, stealth_bonus)"/></td>
+				</tr>
+				<tr><th>Investigation</th>
+					<td><input type="number" min="0" max="5" value="0" id="investigation_ranks" oninput="update_skill_points(investigation_ranks, investigation_points, investigation_bonus)"/></td>
+					<td><output class="points" id="investigation_points">0</output></td>
+					<td><input type="number" value="0" id="investigation_bonus" oninput="update_skill_points(investigation_ranks, investigation_points, investigation_bonus)"/></td>
+				</tr>
+				<tr><th>Conveyance</th>
+					<td><input type="number" min="0" max="5" value="0" id="conveyance_ranks" oninput="update_skill_points(conveyance_ranks, conveyance_points, conveyance_bonus)"/></td>
+					<td><output class="points" id="conveyance_points">0</output></td>
+					<td><input type="number" value="0" id="conveyance_bonus" oninput="update_skill_points(conveyance_ranks, conveyance_points, conveyance_bonus)"/></td>
+				</tr>
+				<tr><th>Survival</th>
+					<td><input type="number" min="0" max="5" value="0" id="survival_ranks" oninput="update_skill_points(survival_ranks, survival_points, survival_bonus)"/></td>
+					<td><output class="points" id="survival_points">0</output></td>
+					<td><input type="number" value="0" id="survival_bonus" oninput="update_skill_points(survival_ranks, survival_points, survival_bonus)"/></td>
+				</tr>
+				<tr><th>Tradesman</th>
+					<td><input type="number" min="0" max="5" value="0" id="tradesman_ranks" oninput="update_skill_points(tradesman_ranks, tradesman_points, tradesman_bonus)"/></td>
+					<td><output class="points" id="tradesman_points">0</output></td>
+					<td><input type="number" value="0" id="tradesman_bonus" oninput="update_skill_points(tradesman_ranks, tradesman_points, tradesman_bonus)"/></td>
+				</tr>
+				<tr><th>Deception</th>
+					<td><input type="number" min="0" max="5" value="0" id="deception_ranks" oninput="update_skill_points(deception_ranks, deception_points, deception_bonus)"/></td>
+					<td><output class="points" id="deception_points">0</output></td>
+					<td><input type="number" value="0" id="deception_bonus" oninput="update_skill_points(deception_ranks, deception_points, deception_bonus)"/></td>
+				</tr>
+				<tr><th>Inspiration</th>
+					<td><input type="number" min="0" max="5" value="0" id="inspiration_ranks" oninput="update_skill_points(inspiration_ranks, inspiration_points, inspiration_bonus)"/></td>
+					<td><output class="points" id="inspiration_points">0</output></td>
+					<td><input type="number" value="0" id="inspiration_bonus" oninput="update_skill_points(inspiration_ranks, inspiration_points, inspiration_bonus)"/></td>
+				</tr>
+				<tr><th>Intimidation</th>
+					<td><input type="number" min="0" max="5" value="0" id="intimidation_ranks" oninput="update_skill_points(intimidation_ranks, intimidation_points, intimidation_bonus)"/></td>
+					<td><output class="points" id="intimidation_points">0</output></td>
+					<td><input type="number" value="0" id="intimidation_bonus" oninput="update_skill_points(intimidation_ranks, intimidation_points, intimidation_bonus)"/></td>
+				</tr>
+				<tr><th>Influence</th>
+					<td><input type="number" min="0" max="5" value="0" id="influence_ranks" oninput="update_skill_points(influence_ranks, influence_points, influence_bonus)"/></td>
+					<td><output class="points" id="influence_points">0</output></td>
+					<td><input type="number" value="0" id="influence_bonus" oninput="update_skill_points(influence_ranks, influence_points, influence_bonus)"/></td>
+				</tr>
+				<tr><th>Academia</th>
+					<td><input type="number" min="0" max="5" value="0" id="academia_ranks" oninput="update_skill_points(academia_ranks, academia_points, academia_bonus)"/></td>
+					<td><output class="points" id="academia_points">0</output></td>
+					<td><input type="number" value="0" id="academia_bonus" oninput="update_skill_points(academia_ranks, academia_points, academia_bonus)"/></td>
+				</tr>
+				<tr><th>Medical</th>
+					<td><input type="number" min="0" max="5" value="0" id="medical_ranks" oninput="update_skill_points(medical_ranks, medical_points, medical_bonus)"/></td>
+					<td><output class="points" id="medical_points">0</output></td>
+					<td><input type="number" value="0" id="medical_bonus" oninput="update_skill_points(medical_ranks, medical_points, medical_bonus)"/></td>
+				</tr>
+				<tr><th>Esoterics</th>
+					<td><input type="number" min="0" max="5" value="0" id="esoterics_ranks" oninput="update_skill_points(esoterics_ranks, esoterics_points, esoterics_bonus)"/></td>
+					<td><output class="points" id="esoterics_points">0</output></td>
+					<td><input type="number" value="0" id="esoterics_bonus" oninput="update_skill_points(esoterics_ranks, esoterics_points, esoterics_bonus)"/></td>
+				</tr>
+				<tr><th>Attunement</th>
+					<td><input type="number" min="0" max="5" value="0" id="attunement_ranks" oninput="update_skill_points(attunement_ranks, attunement_points, attunement_bonus)"/></td>
+					<td><output class="points" id="attunement_points">0</output></td>
+					<td><input type="number" value="0" id="attunement_bonus" oninput="update_skill_points(attunement_ranks, attunement_points, attunement_bonus)"/></td>
+				</tr>
+			</table>
+		</div>
+		<button type="reset">Reset</button>
+	</form>
+</body>
+</html>
