@@ -34,10 +34,13 @@ function update_talent_points(total, base, ranks, points) {
 		points.value = new_points;
 	}
 	update_point_total();
-
 }
 
 function update_skill_points(ranks, points, bonus) {
 	points.value = parseInt(ranks.value) + parseInt(ranks.value) ** 2 - parseInt(bonus.value);
+	if (points.value < 0) {
+		points.value = 0;
+		// TODO indicate that there is unspent background bonus
+	}
 	update_point_total();
 }
