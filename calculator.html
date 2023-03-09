@@ -43,7 +43,7 @@
 				<thead>
 					<tr><th>Talent</th><th>Total</th><th>Natural</th><th>Ranks</th><th>Points</th></tr>
 				</thead>
-				<tbody>
+				<tbody id="talent_list">
 					<tr><th>Force</th>
 						<td><output id="Force_total">5</output> = </td>
 						<td><input type="number" min="4" max="9" value="5" id="Force_base" oninput="update_talent_points(Force_total, Force_base, Force_ranks, Force_points)"/> + </td>
@@ -101,7 +101,7 @@
 				<thead>
 					<tr><th>Skill</th><th>Ranks</th><th>Points</th><th>Background Bonus</th></tr>
 				</thead>
-				<tbody>
+				<tbody id="skill_list">
 					<tr><th>Melee Combat</th>
 						<td><input type="number" min="0" max="5" value="0" id="melee_combat_ranks" oninput="update_skill_points(melee_combat_ranks, melee_combat_points, melee_combat_bonus)"/></td>
 						<td><output class="points" id="melee_combat_points">0</output></td>
