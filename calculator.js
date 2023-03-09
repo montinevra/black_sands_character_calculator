@@ -40,7 +40,9 @@ function update_skill_points(ranks, points, bonus) {
 	points.value = parseInt(ranks.value) + parseInt(ranks.value) ** 2 - parseInt(bonus.value);
 	if (points.value < 0) {
 		points.value = 0;
-		// TODO indicate that there is unspent background bonus
+		points.setAttribute('style', 'color: green');
+	} else {
+		points.setAttribute('style', '');
 	}
 	update_point_total();
 }
