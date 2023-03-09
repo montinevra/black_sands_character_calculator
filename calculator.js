@@ -15,19 +15,19 @@ const snake_case = (string) => {
 }
 
 function update_point_total() {
-	var points_array = document.getElementsByClassName('points');  
-	var points = 0;
+	const points_array = document.getElementsByClassName('points');  
+	let point_total = 0;
 
-	for (var i = 0; i < points_array.length; ++i) {
-		points += parseInt(points_array[i].value);
+	for (const points of points_array) {
+		point_total += parseInt(points.value);
 	}
-	document.getElementById("point_total").value = points + parseInt(document.getElementById("background_cost").value);
+	document.getElementById("point_total").value = point_total + parseInt(document.getElementById("background_cost").value);
 }
 
 function update_talent_points(total, base, ranks, points) {
-	var rank = parseInt(ranks.value);
-	var new_total = rank + parseInt(base.value);
-	var new_points = 0;
+	let rank = parseInt(ranks.value);
+	let new_total = rank + parseInt(base.value);
+	let new_points = 0;
 
 	total.value = new_total;
 	if (rank <= 0) {
@@ -55,23 +55,23 @@ function update_skill_points(ranks, points, bonus) {
 }
 
 function on_load() {
-	for (var i = 0; i < talents.length; ++i) {
+	for (talent of talents) {
 		// TODO set base talents via race selection:
-		// TODO <td><output id="${snake_case(talents[i])}_base">5</output> + </td>\n\
+		// TODO <td><output id="${snake_case(talent)}_base">5</output> + </td>\n\
 		document.getElementById("talent_list").innerHTML += `<tr>\n
-				<th>${talents[i]}</th> \n
-				<td><output id="${snake_case(talents[i])}_total">5</output> = </td>\n
-				<td><input type="number" min="4" max="9" value="5" id="${snake_case(talents[i])}_base" oninput="update_talent_points(${snake_case(talents[i])}_total, ${snake_case(talents[i])}_base, ${snake_case(talents[i])}_ranks, ${snake_case(talents[i])}_points)"/> + </td>\n
-				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talents[i])}_ranks" oninput="update_talent_points(${snake_case(talents[i])}_total, ${snake_case(talents[i])}_base, this, ${snake_case(talents[i])}_points)"/></td>\n
-				<td><output class="points" id="${snake_case(talents[i])}_points">0</output></td>\n
+				<th>${talent}</th> \n
+				<td><output id="${snake_case(talent)}_total">5</output> = </td>\n
+				<td><input type="number" min="4" max="9" value="5" id="${snake_case(talent)}_base" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_ranks, ${snake_case(talent)}_points)"/> + </td>\n
+				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, this, ${snake_case(talent)}_points)"/></td>\n
+				<td><output class="points" id="${snake_case(talent)}_points">0</output></td>\n
 				</tr>\n`;
 	}
-	for (var i = 0; i < skills.length; ++i) {
+	for (const skill of skills) {
 		document.getElementById("skill_list").innerHTML += `<tr>\n
-				<th>${skills[i]}</th>\n
-				<td><input type="number" min="0" max="5" value="0" id="${snake_case(skills[i])}_ranks" oninput="update_skill_points(${snake_case(skills[i])}_ranks, ${snake_case(skills[i])}_points, ${snake_case(skills[i])}_bonus)"/></td>\n
-				<td><output class="points" id="${snake_case(skills[i])}_points">0</output></td>\n
-				<td><input type="number" min="0" value="0" id="${snake_case(skills[i])}_bonus" oninput="update_skill_points(${snake_case(skills[i])}_ranks, ${snake_case(skills[i])}_points, ${snake_case(skills[i])}_bonus)"/></td>\n
+				<th>${skill}</th>\n
+				<td><input type="number" min="0" max="5" value="0" id="${snake_case(skill)}_ranks" oninput="update_skill_points(${snake_case(skill)}_ranks, ${snake_case(skill)}_points, ${snake_case(skill)}_bonus)"/></td>\n
+				<td><output class="points" id="${snake_case(skill)}_points">0</output></td>\n
+				<td><input type="number" min="0" value="0" id="${snake_case(skill)}_bonus" oninput="update_skill_points(${snake_case(skill)}_ranks, ${snake_case(skill)}_points, ${snake_case(skill)}_bonus)"/></td>\n
 				</tr>`
 	}
 	document.getElementById("char_calc").reset()

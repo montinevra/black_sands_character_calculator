@@ -1,4 +1,4 @@
-var talents = [
+const talents = [
 		"Force", 
 		"Dexterity", 
 		"Quickness", 
@@ -8,7 +8,7 @@ var talents = [
 		"Perception", 
 		"Grit", 
 	];
-var skills = [
+const skills = [
 		"Melee Combat", 
 		"Projectile Weapons", 
 		"Firearms", 
