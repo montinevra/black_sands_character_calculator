@@ -14,7 +14,7 @@ function update_point_total() {
 	for (var i = 0; i < points_array.length; ++i) {
 		points += parseInt(points_array[i].value);
 	}
-	document.getElementById("point_total").value = points;
+	document.getElementById("point_total").value = points + parseInt(document.getElementById("background_cost").value);
 }
 
 function update_talent_points(total, base, ranks, points) {

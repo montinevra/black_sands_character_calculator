@@ -96,7 +96,7 @@
 			</table>
 		</div>
 		<hr/>
-		<div>
+		<div class="container">
 			<table id="skills">
 				<thead>
 					<tr><th>Skill</th><th>Ranks</th><th>Points</th><th>Background Bonus</th></tr>
@@ -198,6 +198,9 @@
 						<td><input type="number" value="0" id="attunement_bonus" oninput="update_skill_points(attunement_ranks, attunement_points, attunement_bonus)"/></td>
 					</tr>
 				</tbody>
+			</table>
+			<table>
+				<th>Background Cost</th><th><input type="number" value="0" id="background_cost" oninput="update_point_total()"/></th>
 			</table>
 		</div>
 		<button type="reset">Reset</button>
