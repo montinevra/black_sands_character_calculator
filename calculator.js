@@ -14,6 +14,24 @@ const snake_case = (string) => {
 		.join('_');
 }
 
+function save() {
+	window.localStorage.setItem("race", race.value);
+	const inputs = document.getElementsByTagName("input")
+	for (const input of inputs) {
+		window.localStorage.setItem(input.id, input.value);
+	}
+}
+
+function load() {
+	for (const [id, value] of  Object.entries(window.localStorage))	{
+		document.getElementById(id).value = value;
+	}
+	for (const skill of skills) {
+		update_skill(snake_case(skill));
+	}
+	update_race();
+}
+
 function update_point_total() {
 	const points_array = document.getElementsByClassName('points');  
 	let point_total = 0;
@@ -22,6 +40,7 @@ function update_point_total() {
 		point_total += parseInt(points.value);
 	}
 	document.getElementById("point_total").value = point_total + parseInt(document.getElementById("background_cost").value);
+	save();
 }
 
 function update_talent(talent) {
@@ -89,6 +108,5 @@ function on_load() {
 				<td><input type="number" min="0" value="0" id="${snake_case(skill)}_bonus" oninput="update_skill('${snake_case(skill)}')"/></td>\n
 				</tr>`
 	}
-	document.getElementById("char_calc").reset()
-	update_race();
+	load();
 }
