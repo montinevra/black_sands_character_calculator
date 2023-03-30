@@ -24,9 +24,9 @@ function update_point_total() {
 	document.getElementById("point_total").value = point_total + parseInt(document.getElementById("background_cost").value);
 }
 
-function update_talent_points(total, base, ranks, points) {
+function update_talent_points(total, base, float, ranks, points) {
 	let rank = parseInt(ranks.value);
-	let new_total = rank + parseInt(base.value);
+	let new_total = rank + parseInt(base.value) + parseInt(float.value);
 	let new_points = 0;
 
 	total.value = new_total;
@@ -42,6 +42,7 @@ function update_talent_points(total, base, ranks, points) {
 	}
 	update_point_total();
 }
+
 
 function update_skill_points(ranks, points, bonus) {
 	points.value = parseInt(ranks.value) + parseInt(ranks.value) ** 2 - parseInt(bonus.value);
@@ -61,8 +62,9 @@ function on_load() {
 		document.getElementById("talent_list").innerHTML += `<tr>\n
 				<th>${talent}</th> \n
 				<td><output id="${snake_case(talent)}_total">5</output> = </td>\n
-				<td><input type="number" min="4" max="9" value="5" id="${snake_case(talent)}_base" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_ranks, ${snake_case(talent)}_points)"/> + </td>\n
-				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, this, ${snake_case(talent)}_points)"/></td>\n
+				<td><input type="number" min="4" max="9" value="5" id="${snake_case(talent)}_base" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_float, ${snake_case(talent)}_ranks, ${snake_case(talent)}_points)"/> + </td>\n
+				<td><input type="number" min="0" max="2" value="0" id="${snake_case(talent)}_float" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_float, ${snake_case(talent)}_ranks, ${snake_case(talent)}_points)"/> + </td>\n
+				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_float, this, ${snake_case(talent)}_points)"/></td>\n
 				<td><output class="points" id="${snake_case(talent)}_points">0</output></td>\n
 				</tr>\n`;
 	}
