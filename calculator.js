@@ -55,7 +55,11 @@ function update_race() {
 	update_point_total();
 }
 
-function update_skill_points(ranks, points, bonus) {
+function update_skill(skill) {
+	const points = document.getElementById(`${skill}_points`);
+	const ranks = document.getElementById(`${skill}_ranks`);
+	const bonus = document.getElementById(`${skill}_bonus`);
+
 	points.value = parseInt(ranks.value) + parseInt(ranks.value) ** 2 - parseInt(bonus.value);
 	if (points.value < 0) {
 		points.value = 0;
@@ -80,9 +84,9 @@ function on_load() {
 	for (const skill of skills) {
 		document.getElementById("skill_list").innerHTML += `<tr>\n
 				<th>${skill}</th>\n
-				<td><input type="number" min="0" max="5" value="0" id="${snake_case(skill)}_ranks" oninput="update_skill_points(${snake_case(skill)}_ranks, ${snake_case(skill)}_points, ${snake_case(skill)}_bonus)"/></td>\n
+				<td><input type="number" min="0" max="5" value="0" id="${snake_case(skill)}_ranks" oninput="update_skill('${snake_case(skill)}')"/></td>\n
 				<td><output class="points" id="${snake_case(skill)}_points">0</output></td>\n
-				<td><input type="number" min="0" value="0" id="${snake_case(skill)}_bonus" oninput="update_skill_points(${snake_case(skill)}_ranks, ${snake_case(skill)}_points, ${snake_case(skill)}_bonus)"/></td>\n
+				<td><input type="number" min="0" value="0" id="${snake_case(skill)}_bonus" oninput="update_skill('${snake_case(skill)}')"/></td>\n
 				</tr>`
 	}
 	document.getElementById("char_calc").reset()
