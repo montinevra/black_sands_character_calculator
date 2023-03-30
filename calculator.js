@@ -40,14 +40,19 @@ function update_talent(talent) {
 		}
 		document.getElementById(`${talent}_points`).value = new_points;
 	}
+}
+
+function update_talent_points(talent) {
+	update_talent(talent);
 	update_point_total();
 }
 
 function update_race() {
-	for (const [key, value] of Object.entries(races[race.value].talents)) {
-		document.getElementById(`${key}_base`).value = value;
-		update_talent(key);
+	for (const [talent, base] of Object.entries(races[race.value].talents)) {
+		document.getElementById(`${talent}_base`).value = base;
+		update_talent(talent);
 	}
+	update_point_total();
 }
 
 function update_skill_points(ranks, points, bonus) {
@@ -66,11 +71,9 @@ function on_load() {
 		document.getElementById("talent_list").innerHTML += `<tr>\n
 				<th>${talent}</th> \n
 				<td><output id="${snake_case(talent)}_total">5</output> = </td>\n
-			
-
 				<td><output id="${snake_case(talent)}_base">5</output> + </td>\n\
-				<td><input type="number" min="0" max="2" value="0" id="${snake_case(talent)}_float" oninput="update_talent('${snake_case(talent)}')"/> + </td>\n
-				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent('${snake_case(talent)}')"/></td>\n
+				<td><input type="number" min="0" max="2" value="0" id="${snake_case(talent)}_float" oninput="update_talent_points('${snake_case(talent)}')"/> + </td>\n
+				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent_points('${snake_case(talent)}')"/></td>\n
 				<td><output class="points" id="${snake_case(talent)}_points">0</output></td>\n
 				</tr>\n`;
 	}
