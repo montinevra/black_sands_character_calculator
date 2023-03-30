@@ -24,25 +24,6 @@ function update_point_total() {
 	document.getElementById("point_total").value = point_total + parseInt(document.getElementById("background_cost").value);
 }
 
-function update_talent_points(total, base, float, ranks, points) {
-	let rank = parseInt(ranks.value);
-	let new_total = rank + parseInt(base.value) + parseInt(float.value);
-	let new_points = 0;
-
-	total.value = new_total;
-	if (rank <= 0) {
-		points.value = rank * 5;
-	} else {
-		while (rank > 0) {
-			new_points += new_total * rank;
-			new_total--;
-			rank--;
-		}
-		points.value = new_points;
-	}
-	update_point_total();
-}
-
 function update_talent(talent) {
 	let rank = parseInt(document.getElementById(`${talent}_ranks`).value);
 	let new_total = rank + parseInt(document.getElementById(`${talent}_base`).value) + parseInt(document.getElementById(`${talent}_float`).value);
@@ -88,8 +69,8 @@ function on_load() {
 			
 
 				<td><output id="${snake_case(talent)}_base">5</output> + </td>\n\
-				<td><input type="number" min="0" max="2" value="0" id="${snake_case(talent)}_float" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_float, ${snake_case(talent)}_ranks, ${snake_case(talent)}_points)"/> + </td>\n
-				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent_points(${snake_case(talent)}_total, ${snake_case(talent)}_base, ${snake_case(talent)}_float, this, ${snake_case(talent)}_points)"/></td>\n
+				<td><input type="number" min="0" max="2" value="0" id="${snake_case(talent)}_float" oninput="update_talent('${snake_case(talent)}')"/> + </td>\n
+				<td><input type="number" min="-3" max="5" value="0" id="${snake_case(talent)}_ranks" oninput="update_talent('${snake_case(talent)}')"/></td>\n
 				<td><output class="points" id="${snake_case(talent)}_points">0</output></td>\n
 				</tr>\n`;
 	}
