@@ -111,5 +111,5 @@ function on_load() {
 }
 
 function del_save() {
-	localStorage.clear();
+	window.localStorage.clear();
 }
