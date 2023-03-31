@@ -15,7 +15,7 @@ const snake_case = (string) => {
 }
 
 function save() {
-	window.localStorage.setItem("race", race.value);
+	window.localStorage.setItem("race_list", race_list.value);
 	const inputs = document.getElementsByTagName("input")
 	for (const input of inputs) {
 		window.localStorage.setItem(input.id, input.value);
@@ -67,7 +67,7 @@ function update_talent_points(talent) {
 }
 
 function update_race() {
-	for (const [talent, base] of Object.entries(races[race.value].talents)) {
+	for (const [talent, base] of Object.entries(races[race_list.value].talents)) {
 		document.getElementById(`${talent}_base`).value = base;
 		update_talent(talent);
 	}
@@ -90,8 +90,15 @@ function update_skill(skill) {
 }
 
 function on_load() {
-	for (talent of talents) {
-		document.getElementById("talent_list").innerHTML += `<tr>\n
+	const race_list = document.getElementById("race_list");
+	const talent_list = document.getElementById("talent_list");
+	const skill_list = document.getElementById("skill_list");
+
+	for (const race of Object.entries(races)) {
+
+	}
+	for (const talent of talents) {
+		talent_list.innerHTML += `<tr>\n
 				<th>${talent}</th> \n
 				<td><output id="${snake_case(talent)}_total">5</output> = </td>\n
 				<td><output id="${snake_case(talent)}_base">5</output> + </td>\n\
@@ -101,7 +108,7 @@ function on_load() {
 				</tr>\n`;
 	}
 	for (const skill of skills) {
-		document.getElementById("skill_list").innerHTML += `<tr>\n
+		skill_list.innerHTML += `<tr>\n
 				<th>${skill}</th>\n
 				<td><input type="number" min="0" max="5" value="0" id="${snake_case(skill)}_ranks" oninput="update_skill('${snake_case(skill)}')"/></td>\n
 				<td><output class="points" id="${snake_case(skill)}_points">0</output></td>\n
@@ -109,4 +116,8 @@ function on_load() {
 				</tr>`
 	}
 	load();
+}
+
+function del_save() {
+	localStorage.clear();
 }

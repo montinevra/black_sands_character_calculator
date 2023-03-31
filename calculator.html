@@ -22,7 +22,7 @@
 				<tr>
 					<th>Race</th>
 					<td>
-						<select name="Race" id="race" oninput="update_race()">
+						<select name="Race" id="race_list" oninput="update_race()">
 							<option value="Gyrstall">Gyrstall</option>
 							<option value="Harnwulf">Harnwulf</option>
 							<option value="Iktani">Iktani</option>
@@ -64,6 +64,7 @@
 			</table>
 		</div>
 		<button type="reset">Reset</button>
+		<button type="button" onclick="del_save()">Delete saved data</button>
 	</form>
 </body>
 </html>
