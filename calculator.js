@@ -1,12 +1,3 @@
-// function update_alloted(a, b){
-// 	set_value(a, b);
-// 	available_points.value = parseInt(b.value);
-// }
-
-// function set_value(a, b) {
-// 	a.value = parseInt(b.value);
-// }
-
 const snake_case = (string) => {
 	return string.replace(/\d+/g, ' ')
 		.split(/ |\B(?=[A-Z])/)
