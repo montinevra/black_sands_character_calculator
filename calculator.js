@@ -85,7 +85,8 @@ function on_load() {
 	const talent_list = document.getElementById("talent_list");
 	const skill_list = document.getElementById("skill_list");
 
-	for (const race of Object.entries(races)) {
+	for (const [race] of Object.entries(races)) {
+		race_list.innerHTML += `<option value="${race}">${race}</option>`
 
 	}
 	for (const talent of talents) {
