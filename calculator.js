@@ -57,7 +57,7 @@ function update_talent_points(talent) {
 	update_point_total();
 }
 
-function update_floating_points(talent) {
+function update_float_max() {
 	const float_array = document.getElementsByClassName('float');  
 	let float_total = 0;
 
@@ -67,16 +67,30 @@ function update_floating_points(talent) {
 	for (const float of float_array) {
 		float.setAttribute("max", races[race_list.value].float - float_total + parseInt(float.value));
 	}
+}
+
+function update_floating_points(talent) {
+	const float_array = document.getElementsByClassName('float');  
+
+	update_float_max();
 	update_talent_points(talent);
 }
 
 function update_race() {
+	let float_total = 0;
+
 	for (const [talent, base] of Object.entries(races[race_list.value].talents)) {
+		const float_input = document.getElementById(`${talent}_float`);
 		document.getElementById(`${talent}_base`).value = base;
-		document.getElementById(`${talent}_float`).value = 0;
-		document.getElementById(`${talent}_float`).setAttribute("max", races[race_list.value].float);
+		float_total += parseInt(float_input.value);
+		if (float_total > races[race_list.value].float) {
+
+			float_input.value -= float_total - races[race_list.value].float;
+			float_total -= float_total - races[race_list.value].float;
+		}
 		update_talent(talent);
 	}
+	update_float_max();
 	update_point_total();
 }
 
