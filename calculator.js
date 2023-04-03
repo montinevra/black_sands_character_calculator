@@ -77,16 +77,21 @@ function update_floating_points(talent) {
 }
 
 function update_race() {
+	const float_max = races[race_list.value].float;
 	let float_total = 0;
 
+	if (float_max == 0) {
+		float_col.style.visibility = "collapse";
+	} else {
+		float_col.style.visibility = "visible";
+	}
 	for (const [talent, base] of Object.entries(races[race_list.value].talents)) {
 		const float_input = document.getElementById(`${talent}_float`);
 		document.getElementById(`${talent}_base`).value = base;
 		float_total += parseInt(float_input.value);
-		if (float_total > races[race_list.value].float) {
-
-			float_input.value -= float_total - races[race_list.value].float;
-			float_total -= float_total - races[race_list.value].float;
+		if (float_total > float_max) {
+			float_input.value -= float_total - float_max;
+			float_total -= float_total - float_max;
 		}
 		update_talent(talent);
 	}

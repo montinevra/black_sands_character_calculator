@@ -35,8 +35,12 @@
 			</table> -->
 			<hr/>
 			<table id="talents">
+				<colgroup>
+					<col span="3">
+					<col id="float_col">
+				</colgroup>
 				<thead>
-					<tr><th>Talent</th><th>Total</th><th>Natural</th><th>Floating</th><th>Ranks</th><th>Points</th></tr>
+					<tr><th>Talent</th><th>Total</th><th>Natural</th><th id="float_header">Floating</th><th>Ranks</th><th>Points</th></tr>
 				</thead>
 				<tbody id="talent_list">
 				
@@ -57,7 +61,7 @@
 				<tr><th>Background Cost</th><td><input type="number" min="0" value="0" id="background_cost" oninput="update_point_total()"/></td></tr>
 			</table>
 		</div>
-		<button type="reset">Reset</button>
+		<button type="reset" onclick="float_col.style.visibility = `visible`">Reset</button>
 		<button type="button" onclick="del_save()">Delete saved data</button>
 	</form>
 </body>
