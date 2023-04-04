@@ -1,4 +1,4 @@
-const races = {
+let races = {
 		"Gyrstall": {
 			"talents": {
 				"force": 5, "moxy": 5, "quickness": 5, "perception": 5, "dexterity": 5, "intelligence": 5, "toughness": 5, "grit": 5,
@@ -42,6 +42,57 @@ const races = {
 			"float": 0, 
 		},
 	};
+const variants = {
+		"Seinwulf": {
+			"talents": {
+				"force": 6, "moxy": 5, "quickness": 5, "perception": 6, "dexterity": 5, "intelligence": 4, "toughness": 6, "grit": 5,
+			},
+			"float": 0, 
+		},
+		"Elder-Born Iktani": {
+			"talents": {
+				"force": 4, "moxy": 5, "quickness": 5, "perception": 6, "dexterity": 6, "intelligence": 6, "toughness": 4, "grit": 5,
+			},
+			"float": 0, 
+		},
+		"Reef Shark Tribal": {
+			"talents": {
+				"force": 5, "moxy": 4, "quickness": 6, "perception": 5, "dexterity": 6, "intelligence": 5, "toughness": 4, "grit": 6,
+			},
+			"float": 1, 
+		},
+		"Frost Hare Tribal": {
+			"talents": {
+				"force": 4, "moxy": 5, "quickness": 6, "perception": 5, "dexterity": 6, "intelligence": 6, "toughness": 4, "grit": 5,
+			},
+			"float": 1, 
+		},
+		"Bucket-Shell Tribal": {
+			"talents": {
+				"force": 6, "moxy": 5, "quickness": 4, "perception": 5, "dexterity": 4, "intelligence": 5, "toughness": 6, "grit": 6,
+			},
+			"float": 1, 
+		},
+		"Crag-Ram Tribal": {
+			"talents": {
+				"force": 5, "moxy": 4, "quickness": 4, "perception": 5, "dexterity": 6, "intelligence": 5, "toughness": 6, "grit": 6,
+			},
+			"float": 1, 
+		},
+		"Black-Eyed Hawk Tribal": {
+			"talents": {
+				"force": 5, "moxy": 4, "quickness": 6, "perception": 6, "dexterity": 6, "intelligence": 5, "toughness": 5, "grit": 5,
+			},
+			"float": 0, 
+		},
+		"Blood-Spotted Hyena Tribal": {
+			"talents": {
+				"force": 6, "moxy": 5, "quickness": 6, "perception": 5, "dexterity": 6, "intelligence": 5, "toughness": 5, "grit": 4,
+			},
+			"float": 0, 
+		},
+
+}
 const talents = [
 		"Force", 
 		"Dexterity", 

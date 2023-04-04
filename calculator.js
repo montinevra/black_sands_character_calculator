@@ -115,13 +115,19 @@ function update_skill(skill) {
 }
 
 function on_load() {
-	const race_list = document.getElementById("race_list");
+	const race_options = document.getElementById("race_options");
+	const variant_options = document.getElementById("variant_options");
 	const talent_list = document.getElementById("talent_list");
 	const skill_list = document.getElementById("skill_list");
 
 	for (const [race] of Object.entries(races)) {
-		race_list.innerHTML += `<option value="${race}">${race}</option>`
+		race_options.innerHTML += `<option value="${race}">${race}</option>`;
 	}
+	for (const [variant] of Object.entries(variants)) {
+		variant_options.innerHTML += `<option value="${variant}">${variant}</option>`;
+	}
+	races = Object.assign(variants, races);
+	console.log(races)
 	for (const talent of talents) {
 		talent_list.innerHTML += `<tr>\n
 				<th>${talent}</th> \n
@@ -138,7 +144,7 @@ function on_load() {
 				<td><input type="number" min="0" max="5" value="0" id="${snake_case(skill)}_ranks" oninput="update_skill('${snake_case(skill)}')"/></td>\n
 				<td><output class="points" id="${snake_case(skill)}_points">0</output></td>\n
 				<td><input type="number" min="0" value="0" id="${snake_case(skill)}_bonus" oninput="update_skill('${snake_case(skill)}')"/></td>\n
-				</tr>`
+				</tr>\n`;
 	}
 	load();
 }
