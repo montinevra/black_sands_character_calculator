@@ -127,7 +127,6 @@ function on_load() {
 		variant_options.innerHTML += `<option value="${variant}">${variant}</option>`;
 	}
 	races = Object.assign(variants, races);
-	console.log(races)
 	for (const talent of talents) {
 		talent_list.innerHTML += `<tr>\n
 				<th>${talent}</th> \n
@@ -147,6 +146,11 @@ function on_load() {
 				</tr>\n`;
 	}
 	load();
+}
+
+function reset_calc() {
+	char_calc.reset();
+	update_race();	
 }
 
 function del_save() {
